@@ -1,0 +1,7 @@
+[Unit]
+Description=Fall back to multi-user target (CLI)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl isolate multi-user.target
+
