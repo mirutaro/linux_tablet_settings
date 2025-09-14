@@ -1,0 +1,27 @@
+# --- Custom script to display a helper message for manual /home mount ---
+
+export LANG=C
+
+# Only show this message if /home is NOT mounted.
+# This prevents the message from appearing during normal maintenance.
+if ! mountpoint -q /home; then
+  # Use colors for better readability
+  YELLOW='\e[33m'
+  NC='\e[0m' # No Color
+
+  echo # Add a blank line for spacing
+  echo -e "${YELLOW}###################################################################${NC}"
+  echo -e "${YELLOW}#                                                                 #${NC}"
+  echo -e "${YELLOW}#  Welcome, root! The /home partition is not currently mounted.   #${NC}"
+  echo -e "${YELLOW}#  This is likely because the SD card key was not found.          #${NC}"
+  echo -e "${YELLOW}#                                                                 #${NC}"
+  echo -e "${YELLOW}#  To decrypt /home and start the graphical interface, please run #${NC}"
+  echo -e "${YELLOW}#  the following command:                                         #${NC}"
+  echo -e "${YELLOW}#                                                                 #${NC}"
+  echo -e "${YELLOW}#      start-gui-manually.sh                                      #${NC}"
+  echo -e "${YELLOW}#                                                                 #${NC}"
+  echo -e "${YELLOW}###################################################################${NC}"
+  echo # Add another blank line
+fi
+
+# --- End of custom script ---
